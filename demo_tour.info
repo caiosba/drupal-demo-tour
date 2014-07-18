@@ -1,0 +1,4 @@
+name = Demo Tour
+description = "Build tours that demonstrate features of your site"
+core = 7.x
+dependencies[] = ctools
