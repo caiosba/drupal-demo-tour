@@ -50,6 +50,13 @@ function demo_tour_ctools_export_ui_form(&$form, &$form_state) {
     '#default_value' => $roles,
   );
 
+  $form['paths'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Paths'),
+    '#description' => t('Just play the tour if the current path matches one of the patterns above (one per line)'),
+    '#default_value' => (isset($preset->paths) ? $preset->paths : ''),
+  );
+
   $form['auto'] = array(
     '#type' => 'checkbox',
     '#title' => t('Auto play once'),

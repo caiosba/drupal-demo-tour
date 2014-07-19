@@ -10,7 +10,8 @@ After enabling the module, go to the administration page (admin/structure/demo_t
 you can manage (create, edit, remove, enable, disable, etc.) tours. Tours loaded from files
 (e.g., Features) and from the database will be available. Each tour must have both a readable
 name and a machine name (unique). Tours can be applied just to users with some roles, and also
-can be forced to play automatically only once for each user.
+can be forced to play automatically only once for each user. You can also provide a list of
+path patterns, and so the tour is played only if the current path matches one of the patterns.
 
 A tour is made of steps. Through the UI it's possible to add the steps to each tour. A step
 consists of a CSS selector (near which the tooltip will be positioned), a title and a description.

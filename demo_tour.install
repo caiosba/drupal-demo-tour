@@ -52,6 +52,12 @@ function demo_tour_schema() {
         'not null' => FALSE,
         'serialize' => TRUE,
       ),
+      'paths' => array(
+        'description' => 'Paths of this tour',
+        'type' => 'text',
+        'not null' => FALSE,
+        'serialize' => FALSE,
+      ),
       'steps' => array(
         'description' => 'Steps of this tour',
         'type' => 'text',
@@ -99,4 +105,20 @@ function demo_tour_schema() {
   );
 
   return $schema;
+}
+
+/**
+ * Implements hook_update_N().
+ * Adds a "paths" field to the presets table.
+ */
+function demo_tour_update_7100() {
+  $ret = array();
+  $spec = array(
+    'description' => 'Paths of this tour',
+    'type' => 'text',
+    'not null' => FALSE,
+    'serialize' => FALSE,
+  );
+  db_add_field('demo_tour_presets', 'paths', $spec, $ret);
+  return $ret;
 }

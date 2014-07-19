@@ -66,15 +66,22 @@ function demo_tour_page_build(&$page) {
 
       if ($tour->auto && !empty($tour->roles) && !_demo_tour_user_took_tour($user, $tour)) {
 
+        // Check if roles match
         $roles = array();
         foreach ($tour->roles as $rid => $selected) {
           if ($selected) {
             $roles[] = $rid;
           }
         }
+        $roles_match = array_intersect(array_keys($user->roles), $roles);
 
-        $match = array_intersect(array_keys($user->roles), $roles);
-        if (!empty($match)) {
+        // Check if path matches
+        $path_matches = true;
+        if (!empty($tour->paths)) {
+          $path_matches = drupal_match_path(current_path(), $tour->paths);
+        }
+
+        if (!empty($roles_match) && $path_matches) {
           _demo_tour_user_takes_tour($user, $tour);
         }
 
@@ -127,6 +134,7 @@ function demo_tour_default_demo_tour_presets() {
   $preset->roles = array();
   $preset->steps = array();
   $preset->auto = 1;
+  $preset->paths = '';
   $export['demo_tour_default_presets'] = $preset;
 
   return $export;
