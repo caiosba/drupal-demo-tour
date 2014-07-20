@@ -4,7 +4,7 @@ Demo Tour
 This module allows administrators to create tours for a Drupal site. Tours can
 show to the users how some features work. This module depends on CTools, so you
 can export tours to Features, for example, besides all other benefits that CTools
-provides. It is based on Bootstrap Tour.
+provides. It's based on Bootstrap Tour.
 
 After enabling the module, go to the administration page (admin/structure/demo_tour) where
 you can manage (create, edit, remove, enable, disable, etc.) tours. Tours loaded from files
