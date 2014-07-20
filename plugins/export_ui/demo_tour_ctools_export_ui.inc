@@ -90,6 +90,7 @@ function demo_tour_ctools_export_ui_form(&$form, &$form_state) {
         '#title' => t('Element'),
         '#description' => t('CSS selector of the element targeted by this step'),
         '#default_value' => $preset->steps[$i]['element'],
+        '#maxlength' => 512,
       );
       
       $form['steps'][$i]['title'] = array(
