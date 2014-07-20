@@ -20,6 +20,6 @@ You can also force a tour to be played by appending `?tour=<machine name of the 
 
 Check [this video](http://ca.ios.ba/files/drupal/demotour.ogv) to understand better how it works.
 
-Check the module on [Github](https://github.com/caiosba/drupal-demo-tour).
+Check the module on [Drupal.org](https://www.drupal.org/project/demo_tour).
 
 This module was sponsored by [Meedan](http://meedan.org).
