@@ -170,3 +170,11 @@ function demo_tour_preset_export($obj, $indent = '') {
   $output = ctools_export_object('demo_tour_presets', $obj, $indent);
   return $output;
 }
+
+/**
+ * Load JavaScript file for form.
+ */
+function _demo_tour_load_form_javascript($form, &$form_state) {
+  drupal_add_js(drupal_get_path('module', 'demo_tour') . '/js/tour_form.js');
+  return $form;
+}

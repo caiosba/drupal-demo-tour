@@ -72,11 +72,11 @@ function demo_tour_ctools_export_ui_form(&$form, &$form_state) {
     '#tree' => TRUE,
     '#prefix' => '<div id="steps">',
     '#suffix' => '</div>',
+    '#attributes' => array('class' => array('edit-steps')),
   );
 
   if ($form_state['storage']['steps']) {
     for ($i = 0; $i < $form_state['storage']['steps']; $i++) {
-
       $form['steps'][$i] = array(
         '#type' => 'fieldset',
         '#title' => t('Step #@i', array('@i' => ($i + 1))),
@@ -106,7 +106,6 @@ function demo_tour_ctools_export_ui_form(&$form, &$form_state) {
         '#description' => t('Content of this step'),
         '#default_value' => $preset->steps[$i]['content'],
       );
-
     }
   }
 
@@ -121,10 +120,34 @@ function demo_tour_ctools_export_ui_form(&$form, &$form_state) {
   );
 
   $form_state['storage']['steps']++;
-
+  
+  $form['#after_build'] = array('_demo_tour_load_form_javascript');
+  
   return $form;
 }
 
 function demo_tour_ajax_add_step($form, $form_state) {
   return $form['steps'];
+}
+
+/**
+ * Implements hook_ctools_export_ui_form_submit().
+ */
+function demo_tour_ctools_export_ui_form_submit(&$form, &$form_state) {
+  for ($i = 0; $i < $form_state['storage']['steps']; $i++) {
+    if (!isset($form_state['values']['steps'][$i])) {
+      array_splice($form_state['item']->steps, $i, 1);
+      $form_state['storage']['steps']--;
+    }
+
+    else {
+      $element = $form_state['values']['steps'][$i];
+
+      if (empty($element['element']) || empty($element['title']) || empty($element['content'])) {
+        array_splice($form_state['values']['steps'], $i, 1);
+        array_splice($form_state['item']->steps, $i, 1);
+        $form_state['storage']['steps']--;
+      }
+    }
+  }
 }
