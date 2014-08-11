@@ -13,7 +13,7 @@ name and a machine name (unique). Tours can be applied just to users with some r
 can be forced to play automatically only once for each user. You can also provide a list of
 path patterns, and so the tour is played only if the current path matches one of the patterns.
 
-A tour is made of steps. Through the UI it's possible to add the steps to each tour. A step
+A tour is made of steps. Through the UI it's possible to add and remove the steps to each tour. A step
 consists of a CSS selector (near which the tooltip will be positioned), a title and a description.
 
 You can also force a tour to be played by appending `?tour=<machine name of the tour>` to the URL.
