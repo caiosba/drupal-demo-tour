@@ -18,7 +18,7 @@ jQuery(function () {
         html += '  <div class="popover-arrow"></div>';
         html += '  <div class="popover-close" data-role="end"><span>[X]</span></div>';
         html += '  <h4><b>' + (i+1) + '</b> <span class="popover-title">' + step.title + '</span></h4>';
-        html += '  <div class="popover-content">' + step.content + '</div>';
+        html += '  <div class="popover-content"><p></p></div>';
         html += '  <div class="popover-navigation">';
         html += '    <ul>';
 
