@@ -47,8 +47,7 @@ function demo_tour_schema() {
       ),
       'roles' => array(
         'description' => 'Roles that have access to this tour',
-        'type' => 'varchar',
-        'length' => '128',
+        'type' => 'text',
         'not null' => FALSE,
         'serialize' => TRUE,
       ),
@@ -121,4 +120,18 @@ function demo_tour_update_7100() {
   );
   db_add_field('demo_tour_presets', 'paths', $spec, $ret);
   return $ret;
+}
+
+/**
+ * Implements hook_update_N().
+ * Changes type of "roles" column
+ */
+function demo_tour_update_7101() {
+  $spec = array(
+    'description' => 'Roles that have access to this tour',
+    'type' => 'text',
+    'not null' => FALSE,
+    'serialize' => TRUE,
+  );
+  return db_change_field('demo_tour_presets', 'roles', 'roles', $spec);
 }
